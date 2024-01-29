@@ -1,5 +1,5 @@
 import 'package:flash_eats/core/routing/routes.dart';
-import 'package:flash_eats/features/authentication/ui/widgets/phone_registration_screen.dart';
+import 'package:flash_eats/features/authentication/ui/phone_registration_screen.dart';
 import 'package:flash_eats/features/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
