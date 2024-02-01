@@ -1,5 +1,5 @@
 import 'package:flash_eats/core/routing/routes.dart';
-import 'package:flash_eats/features/authentication/ui/phone_registration_screen.dart';
+import 'package:flash_eats/features/login/ui/login_screen.dart';
 import 'package:flash_eats/features/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +12,7 @@ class AppRouter {
       case Routes.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case Routes.phoneRegistration:
-        return MaterialPageRoute(builder: (_) => const PhoneRegistration());
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

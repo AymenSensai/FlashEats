@@ -34,7 +34,7 @@ class OnboardingScreen extends StatelessWidget {
           SizedBox(height: 8.h),
           Text(
             "Enjoy the best restaurants or get what you need from nearby stoeres, delivered",
-            style: TextStyles.font18GraykMedium,
+            style: TextStyles.font18SteelGrayMedium,
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 86.h),
