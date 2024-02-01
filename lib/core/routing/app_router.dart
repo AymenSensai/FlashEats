@@ -1,7 +1,10 @@
+import 'package:flash_eats/core/di/dependency_injection.dart';
 import 'package:flash_eats/core/routing/routes.dart';
 import 'package:flash_eats/features/login/ui/login_screen.dart';
 import 'package:flash_eats/features/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flash_eats/features/login/logic/cubit/login_cubit.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -11,8 +14,13 @@ class AppRouter {
     switch (settings.name) {
       case Routes.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
-      case Routes.phoneRegistration:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case Routes.loginScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: const LoginScreen(),
+          ),
+        );
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
