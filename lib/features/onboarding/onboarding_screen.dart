@@ -1,5 +1,7 @@
+import 'package:flash_eats/core/helpers/extensions.dart';
+import 'package:flash_eats/core/routing/routes.dart';
 import 'package:flash_eats/core/theming/styles.dart';
-import 'package:flash_eats/features/onboarding/widgets/get_started_button.dart';
+import 'package:flash_eats/core/widgets/app_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,7 +21,7 @@ class OnboardingScreen extends StatelessWidget {
         children: [
           Text(
             "Flash Eats",
-            style: TextStyles.font32BlackNormal,
+            style: TextStyles.font32BlackRegular,
           ),
           SizedBox(height: 16.h),
           SvgPicture.asset('assets/svgs/onboarding_illustration.svg'),
@@ -32,11 +34,16 @@ class OnboardingScreen extends StatelessWidget {
           SizedBox(height: 8.h),
           Text(
             "Enjoy the best restaurants or get what you need from nearby stoeres, delivered",
-            style: TextStyles.font18GraykMedium,
+            style: TextStyles.font18SteelGrayMedium,
             textAlign: TextAlign.center,
           ),
           SizedBox(height: 86.h),
-          const GetStartedButton()
+          AppTextButton(
+              buttonText: "Send Code",
+              textStyle: TextStyles.font18WhiteSemiBold,
+              onPressed: () {
+                context.pushNamed(Routes.phoneRegistration);
+              })
         ],
       ),
     ))));
