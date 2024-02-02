@@ -39,10 +39,10 @@ class OnboardingScreen extends StatelessWidget {
           ),
           SizedBox(height: 86.h),
           AppTextButton(
-              buttonText: "Send Code",
+              buttonText: "Get started",
               textStyle: TextStyles.font18WhiteSemiBold,
               onPressed: () {
-                context.pushNamed(Routes.phoneRegistration);
+                context.pushNamed(Routes.loginScreen);
               })
         ],
       ),
