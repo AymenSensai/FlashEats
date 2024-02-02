@@ -1,5 +1,6 @@
 import 'package:flash_eats/core/di/dependency_injection.dart';
 import 'package:flash_eats/core/routing/routes.dart';
+import 'package:flash_eats/features/home/ui/home_screen.dart';
 import 'package:flash_eats/features/login/ui/login_screen.dart';
 import 'package:flash_eats/features/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,8 @@ class AppRouter {
             child: const LoginScreen(),
           ),
         );
+      case Routes.homeScreen:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
