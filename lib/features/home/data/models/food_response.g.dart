@@ -8,9 +8,9 @@ part of 'food_response.dart';
 
 FoodResponse _$FoodResponseFromJson(Map<String, dynamic> json) => FoodResponse(
       message: json['message'] as String?,
-      foodData: json['data'] == null
-          ? null
-          : FoodData.fromJson(json['data'] as Map<String, dynamic>),
+      foodData: (json['data'] as List<dynamic>?)
+          ?.map((e) => FoodData.fromJson(e as Map<String, dynamic>))
+          .toList(),
       status: json['status'] as bool?,
       code: json['code'] as int?,
     );
@@ -24,11 +24,11 @@ Map<String, dynamic> _$FoodResponseToJson(FoodResponse instance) =>
     };
 
 FoodData _$FoodDataFromJson(Map<String, dynamic> json) => FoodData(
-      name: json['name'] as String?,
-      description: json['description'] as String?,
-      price: json['price'] as String?,
-      image: json['image'] as String?,
-      type: json['type'] as String?,
+      name: json['name'] as String,
+      description: json['description'] as String,
+      price: json['price'] as String,
+      image: json['image'] as String,
+      type: json['type'] as String,
     );
 
 Map<String, dynamic> _$FoodDataToJson(FoodData instance) => <String, dynamic>{

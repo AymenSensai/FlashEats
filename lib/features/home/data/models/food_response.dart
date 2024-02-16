@@ -5,7 +5,7 @@ part 'food_response.g.dart';
 class FoodResponse {
   String? message;
   @JsonKey(name: 'data')
-  FoodData? foodData;
+  List<FoodData>? foodData;
   bool? status;
   int? code;
 
@@ -17,13 +17,18 @@ class FoodResponse {
 
 @JsonSerializable()
 class FoodData {
-  String? name;
-  String? description;
-  String? price;
-  String? image;
-  String? type;
+  String name;
+  String description;
+  String price;
+  String image;
+  String type;
 
-  FoodData({this.name, this.description, this.price, this.image, this.type});
+  FoodData(
+      {required this.name,
+      required this.description,
+      required this.price,
+      required this.image,
+      required this.type});
 
   factory FoodData.fromJson(Map<String, dynamic> json) =>
       _$FoodDataFromJson(json);

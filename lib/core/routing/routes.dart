@@ -3,4 +3,10 @@ class Routes {
   static const String loginScreen = '/loginScreen';
   static const String signUpScreen = '/signUpScreen';
   static const String homeScreen = '/homeScreen';
+  static const String foodTypeScreen = '/foodTypeScreen';
+  static const String foodScreen = '/foodScreen';
+  static const String detailScreen = '/detailScreen';
+  static const String favorites = '/favorites';
+  static const String orders = '/orders';
+  static const String profile = '/profile';
 }

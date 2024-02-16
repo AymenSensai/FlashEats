@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flash_eats/core/networking/api_constants.dart';
+import 'package:flash_eats/features/home/data/models/food_request_body.dart';
 import 'package:flash_eats/features/home/data/models/food_response.dart';
 import 'package:flash_eats/features/login/data/models/login_request_body.dart';
 import 'package:flash_eats/features/login/data/models/login_response.dart';
@@ -24,5 +25,8 @@ abstract class ApiService {
   );
 
   @GET(ApiConstants.food)
-  Future<FoodResponse> getFood();
+  Future<FoodResponse> getFood(@Queries() FoodRequestBody foodRequestBody);
+
+  @GET(ApiConstants.popularFood)
+  Future<FoodResponse> getPopularFood();
 }

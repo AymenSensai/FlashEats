@@ -1,3 +1,4 @@
+import 'package:flash_eats/core/networking/api_constants.dart';
 import 'package:flutter/material.dart';
 
 extension Navigation on BuildContext {
@@ -17,4 +18,8 @@ extension Navigation on BuildContext {
   }
 
   void pop() => Navigator.of(this).pop();
+
+  Widget networkImage(String image, {double? width, double? height}) =>
+      Image.network("${ApiConstants.apiBaseUrl}$image",
+          width: width, height: height, fit: BoxFit.contain);
 }
