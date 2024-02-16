@@ -61,6 +61,12 @@ dependencies:
   flutter_svg: ^2.0.9
   # for adapting screen and font size.
   flutter_screenutil: ^5.9.0
+  # To get the user location.
+  geolocator: ^10.1.0
+  # To get city and country names from the coordinates retrieved with geolocator
+  geocoding: ^2.1.1
+  # Provides an easy way to add shimmer effect.
+  shimmer: ^3.0.0
 
 
 dev_dependencies:
@@ -101,17 +107,17 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Quicksand
+      fonts:
+        - asset: assets/fonts/quicksandRegular.ttf
+          weight: 400
+        - asset: assets/fonts/quicksandMedium.ttf
+          weight: 500
+        - asset: assets/fonts/quicksandSemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/quicksandBold.ttf
+          weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

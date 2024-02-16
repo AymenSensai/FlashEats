@@ -13,7 +13,7 @@ class _ApiService implements ApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://192.168.1.6:8000/';
+    baseUrl ??= 'http://192.168.1.4:8000/';
   }
 
   final Dio _dio;
@@ -77,7 +77,35 @@ class _ApiService implements ApiService {
   }
 
   @override
-  Future<FoodResponse> getFood() async {
+  Future<FoodResponse> getFood(FoodRequestBody foodRequestBody) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(foodRequestBody.toJson());
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<FoodResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'food/index',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = FoodResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<FoodResponse> getPopularFood() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -90,7 +118,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'food/index',
+              'food/popular',
               queryParameters: queryParameters,
               data: _data,
             )

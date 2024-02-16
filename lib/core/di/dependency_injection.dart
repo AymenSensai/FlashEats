@@ -1,6 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flash_eats/core/networking/api_service.dart';
 import 'package:flash_eats/core/networking/dio_factory.dart';
+import 'package:flash_eats/features/home/data/repos/home_repo.dart';
+import 'package:flash_eats/features/home/logic/cubit/food_type_cubit.dart';
+import 'package:flash_eats/features/home/logic/cubit/home_cubit.dart';
+import 'package:flash_eats/features/home/logic/cubit/location_cubit.dart';
 import 'package:flash_eats/features/sign_up/data/repos/sign_up_repo.dart';
 import 'package:flash_eats/features/sign_up/logic/sign_up_cubit.dart';
 import 'package:get_it/get_it.dart';
@@ -22,4 +26,10 @@ Future<void> setupGetIt() async {
   // signup
   getIt.registerLazySingleton<SignupRepo>(() => SignupRepo(getIt()));
   getIt.registerFactory<SignupCubit>(() => SignupCubit(getIt()));
+
+  // home
+  getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(getIt()));
+  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt()));
+  getIt.registerFactory<LocationCubit>(() => LocationCubit());
+  getIt.registerFactory<FoodTypeCubit>(() => FoodTypeCubit(getIt()));
 }
