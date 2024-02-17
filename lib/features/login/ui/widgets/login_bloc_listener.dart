@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flash_eats/core/helpers/extensions.dart';
 import 'package:flash_eats/features/login/logic/cubit/login_cubit.dart';
 import 'package:flash_eats/features/login/logic/cubit/login_state.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/colors.dart';
@@ -28,9 +29,12 @@ class LoginBlocListener extends StatelessWidget {
               ),
             );
           },
-          success: (loginResponse) {
+          success: (loginResponse) async {
             context.pop();
             context.pushNamed(Routes.homeScreen);
+
+            final prefs = await SharedPreferences.getInstance();
+            prefs.setString('token', loginResponse.userData?.token ?? '');
           },
           error: (error) {
             setupErrorState(context, error);

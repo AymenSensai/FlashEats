@@ -17,19 +17,36 @@ class FoodResponse {
 
 @JsonSerializable()
 class FoodData {
+  int id;
   String name;
   String description;
   String price;
   String image;
   String type;
-
+  @JsonKey(name: 'topics_extra')
+  List<Topic> topicsExtra;
+  @JsonKey(name: 'topics_to_remove')
+  List<Topic> topicsToRemove;
   FoodData(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.description,
       required this.price,
       required this.image,
-      required this.type});
+      required this.type,
+      required this.topicsExtra,
+      required this.topicsToRemove});
 
   factory FoodData.fromJson(Map<String, dynamic> json) =>
       _$FoodDataFromJson(json);
+}
+
+@JsonSerializable()
+class Topic {
+  int id;
+  String name;
+
+  Topic({required this.id, required this.name});
+
+  factory Topic.fromJson(Map<String, dynamic> json) => _$TopicFromJson(json);
 }

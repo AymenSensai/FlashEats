@@ -48,6 +48,7 @@ class PopularFoodListView extends StatelessWidget {
               itemCount: foodList.length,
               itemBuilder: (context, index) {
                 final food = foodList[index];
+                final heroTag = 'popular_hero_${food.id}';
                 return Padding(
                     padding: const EdgeInsets.fromLTRB(0.0, 0.0, 16.0, 0.0),
                     child: Container(
@@ -66,7 +67,8 @@ class PopularFoodListView extends StatelessWidget {
                         ),
                         child: GestureDetector(
                             onTap: () {
-                              context.pushNamed(Routes.detailScreen);
+                              context.pushNamed(Routes.detailsScreen,
+                                  arguments: [food, heroTag]);
                             },
                             child: Padding(
                               padding:
@@ -76,11 +78,13 @@ class PopularFoodListView extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 8.w, vertical: 8.h),
-                                    child: context.networkImage(food.image,
-                                        width: 150.h, height: 80.w),
-                                  ),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 8.w, vertical: 8.h),
+                                      child: Hero(
+                                        tag: heroTag,
+                                        child: context.networkImage(food.image,
+                                            width: 150.h, height: 80.w),
+                                      )),
                                   SingleLineText(
                                       text: food.name,
                                       style: TextStyles.font14BlackSemiBold),

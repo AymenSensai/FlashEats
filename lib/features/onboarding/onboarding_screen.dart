@@ -5,6 +5,7 @@ import 'package:flash_eats/core/widgets/app_text_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -42,10 +43,17 @@ class OnboardingScreen extends StatelessWidget {
               buttonText: "Get started",
               textStyle: TextStyles.font18WhiteSemiBold,
               onPressed: () {
+                // Set shared preferences value to 1
+                onboardingPrefStateChange();
                 context.pushNamed(Routes.loginScreen);
               })
         ],
       ),
     ))));
+  }
+
+  Future<void> onboardingPrefStateChange() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('onboarding', 1);
   }
 }

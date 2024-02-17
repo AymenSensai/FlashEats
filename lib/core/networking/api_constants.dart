@@ -7,6 +7,7 @@ class ApiConstants {
   static const String showFood = "food/show";
   static const String popularFood = "food/popular";
   static const String favorites = "user/favorites";
+  static const String containsFavorite = "user/favorites/contains";
 }
 
 class ApiErrors {
