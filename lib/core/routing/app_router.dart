@@ -1,5 +1,7 @@
 import 'package:flash_eats/core/di/dependency_injection.dart';
 import 'package:flash_eats/core/routing/routes.dart';
+import 'package:flash_eats/features/details/logic/cubit/details_cubit.dart';
+import 'package:flash_eats/features/details/ui/details_screen.dart';
 import 'package:flash_eats/features/home/data/models/food_response.dart';
 import 'package:flash_eats/features/home/logic/cubit/food_type_cubit.dart';
 import 'package:flash_eats/features/home/logic/cubit/home_cubit.dart';
@@ -62,6 +64,15 @@ class AppRouter {
               )
             ],
             child: const HomeScreen(),
+          ),
+        );
+      case Routes.detailsScreen:
+        final argumentsList = arguments as List<dynamic>;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<DetailsCubit>(),
+            child: DetailsScreen(
+                food: argumentsList[0], heroTag: argumentsList[1]),
           ),
         );
       default:

@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flash_eats/core/networking/api_constants.dart';
+import 'package:flash_eats/features/details/data/models/details_request_body.dart';
+import 'package:flash_eats/features/details/data/models/details_response.dart';
 import 'package:flash_eats/features/home/data/models/food_request_body.dart';
 import 'package:flash_eats/features/home/data/models/food_response.dart';
 import 'package:flash_eats/features/login/data/models/login_request_body.dart';
@@ -29,4 +31,20 @@ abstract class ApiService {
 
   @GET(ApiConstants.popularFood)
   Future<FoodResponse> getPopularFood();
+
+  @GET(ApiConstants.favorites)
+  Future<FoodResponse> getFavorites(@Header('Authorization') String token);
+
+  @PUT(ApiConstants.favorites)
+  Future<FoodResponse> addFavorite(@Header('Authorization') String token,
+      @Body() DetailsRequestBody detailsRequestBody);
+
+  @DELETE(ApiConstants.favorites)
+  Future<FoodResponse> deleteFavorite(@Header('Authorization') String token,
+      @Body() DetailsRequestBody detailsRequestBody);
+
+  @GET(ApiConstants.containsFavorite)
+  Future<DetailsResponse> containsFavorite(
+      @Header('Authorization') String token,
+      @Queries() DetailsRequestBody detailsRequestBody);
 }

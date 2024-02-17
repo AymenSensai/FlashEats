@@ -30,6 +30,12 @@ class TextStyles {
       color: ColorsManager.black,
       fontFamily: appFontFamily);
 
+  static TextStyle font24BlackMedium = TextStyle(
+      fontSize: 24.sp,
+      fontWeight: FontWeightHelper.medium,
+      color: ColorsManager.black,
+      fontFamily: appFontFamily);
+
   static TextStyle font24GreenkBold = TextStyle(
       fontSize: 24.sp,
       fontWeight: FontWeightHelper.bold,
@@ -96,9 +102,21 @@ class TextStyles {
       color: ColorsManager.black,
       fontFamily: appFontFamily);
 
+  static TextStyle font16BlackMedium = TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.medium,
+      color: ColorsManager.black,
+      fontFamily: appFontFamily);
+
   static TextStyle font16OrangeSemiBold = TextStyle(
       fontSize: 16.sp,
       fontWeight: FontWeightHelper.semiBold,
+      color: ColorsManager.mainOrange,
+      fontFamily: appFontFamily);
+
+  static TextStyle font16OrangeMedium = TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.medium,
       color: ColorsManager.mainOrange,
       fontFamily: appFontFamily);
 

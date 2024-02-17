@@ -25,9 +25,11 @@ class FoodListView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
           itemBuilder: (context, index) {
             final food = foodList[index];
+            final heroTag = 'food_hero_${food.id}';
             return GestureDetector(
               onTap: () {
-                context.pushNamed(Routes.detailScreen);
+                context.pushNamed(Routes.detailsScreen,
+                    arguments: [food, heroTag]);
               },
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 16.0),
@@ -55,8 +57,11 @@ class FoodListView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            context.networkImage(food.image,
-                                width: 150.h, height: 100.w),
+                            Hero(
+                              tag: heroTag,
+                              child: context.networkImage(food.image,
+                                  width: 150.h, height: 100.w),
+                            ),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -67,6 +67,10 @@ dependencies:
   geocoding: ^2.1.1
   # Provides an easy way to add shimmer effect.
   shimmer: ^3.0.0
+  # Beautiful animations inspired on Animate.css, every animation is a customizable widget.
+  animate_do: ^3.3.3
+  # For reading and writing simple key-value pairs.
+  shared_preferences: ^2.2.2
 
 
 dev_dependencies:

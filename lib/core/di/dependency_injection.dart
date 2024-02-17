@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flash_eats/core/networking/api_service.dart';
 import 'package:flash_eats/core/networking/dio_factory.dart';
+import 'package:flash_eats/features/details/data/repos/details_repo.dart';
+import 'package:flash_eats/features/details/logic/cubit/details_cubit.dart';
 import 'package:flash_eats/features/home/data/repos/home_repo.dart';
 import 'package:flash_eats/features/home/logic/cubit/food_type_cubit.dart';
 import 'package:flash_eats/features/home/logic/cubit/home_cubit.dart';
@@ -32,4 +34,8 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt()));
   getIt.registerFactory<LocationCubit>(() => LocationCubit());
   getIt.registerFactory<FoodTypeCubit>(() => FoodTypeCubit(getIt()));
+
+  // details
+  getIt.registerLazySingleton<DetailsRepo>(() => DetailsRepo(getIt()));
+  getIt.registerFactory<DetailsCubit>(() => DetailsCubit(getIt()));
 }

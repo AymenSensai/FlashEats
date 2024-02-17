@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flash_eats/core/helpers/extensions.dart';
 import 'package:flash_eats/features/sign_up/logic/sign_up_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/colors.dart';
@@ -30,9 +31,12 @@ class SignupBlocListener extends StatelessWidget {
               ),
             );
           },
-          signupSuccess: (signupResponse) {
+          signupSuccess: (signupResponse) async {
             context.pop();
-            showSuccessDialog(context);
+            context.pushNamed(Routes.homeScreen);
+
+            final prefs = await SharedPreferences.getInstance();
+            prefs.setString('token', signupResponse.userData?.token ?? '');
           },
           signupError: (error) {
             setupErrorState(context, error);
