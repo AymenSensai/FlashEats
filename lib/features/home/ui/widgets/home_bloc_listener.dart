@@ -3,7 +3,7 @@ import 'package:flash_eats/core/theming/styles.dart';
 import 'package:flash_eats/features/home/data/models/food_response.dart';
 import 'package:flash_eats/features/home/logic/cubit/home_cubit.dart';
 import 'package:flash_eats/features/home/logic/cubit/home_state.dart';
-import 'package:flash_eats/features/home/ui/widgets/food_list_view.dart';
+import 'package:flash_eats/core/widgets/food_list_view.dart';
 import 'package:flash_eats/features/home/ui/widgets/popular_food_List_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
