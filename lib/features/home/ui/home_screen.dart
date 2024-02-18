@@ -2,11 +2,12 @@ import 'package:flash_eats/core/helpers/extensions.dart';
 import 'package:flash_eats/core/helpers/spacing.dart';
 import 'package:flash_eats/core/routing/routes.dart';
 import 'package:flash_eats/core/theming/styles.dart';
+import 'package:flash_eats/core/widgets/vertical_shimmer_list.dart';
 import 'package:flash_eats/features/home/data/models/food_response.dart';
 import 'package:flash_eats/features/home/logic/cubit/home_cubit.dart';
 import 'package:flash_eats/features/home/logic/cubit/home_state.dart';
 import 'package:flash_eats/features/home/logic/cubit/location_cubit.dart';
-import 'package:flash_eats/features/home/ui/widgets/food_list_view.dart';
+import 'package:flash_eats/core/widgets/food_list_view.dart';
 import 'package:flash_eats/features/home/ui/widgets/food_type_view.dart';
 import 'package:flash_eats/features/home/ui/widgets/home_app_bar.dart';
 import 'package:flash_eats/features/home/ui/widgets/popular_food_List_view.dart';
@@ -22,7 +23,11 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   String locationMessage = '';
   List<FoodData> foodList = [];
 
@@ -35,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: HomeAppBar(locationMessage: locationMessage, foodList: foodList),
       backgroundColor: Colors.white,
@@ -174,27 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ],
                                       ),
                                     ),
-                                    Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 16.0),
-                                        child: Shimmer.fromColors(
-                                          baseColor: Colors.grey[300]!,
-                                          highlightColor: Colors.grey[100]!,
-                                          child: ListView.builder(
-                                            shrinkWrap: true,
-                                            itemCount: 6,
-                                            itemBuilder: (context, index) {
-                                              return Card(
-                                                elevation: 1.0,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(16),
-                                                ),
-                                                child: SizedBox(height: 120.h),
-                                              );
-                                            },
-                                          ),
-                                        )),
+                                    const VerticalShimmerList(),
                                   ],
                                 );
 
