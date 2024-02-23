@@ -40,7 +40,11 @@ class _FavoriteBlocBuilderState extends State<FavoriteBlocBuilder> {
                         .read<FavoriteCubit>()
                         .deleteFavorite(selectedFood.id);
                   },
-                  icon: SvgPicture.asset('assets/svgs/heart_solid_icon.svg'),
+                  icon: SvgPicture.asset(
+                    'assets/svgs/heart_solid_icon.svg',
+                    height: 32.h,
+                    width: 32.w,
+                  ),
                 ));
               } else {
                 return Padding(

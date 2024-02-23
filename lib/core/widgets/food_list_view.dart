@@ -76,7 +76,7 @@ class FoodListView extends StatelessWidget {
                                     style: TextStyles.font14SteelGrayRegular),
                                 verticalSpace(2),
                                 SingleLineText(
-                                    text: food.price,
+                                    text: "\$${food.price}",
                                     style: TextStyles.font18OrangeSemiBold)
                               ],
                             ),

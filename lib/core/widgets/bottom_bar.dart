@@ -6,6 +6,8 @@ import 'package:flash_eats/features/favorite/ui/favorite_screen.dart';
 import 'package:flash_eats/features/home/logic/cubit/home_cubit.dart';
 import 'package:flash_eats/features/home/logic/cubit/location_cubit.dart';
 import 'package:flash_eats/features/home/ui/home_screen.dart';
+import 'package:flash_eats/features/profile/logic/cubit/profile_cubit.dart';
+import 'package:flash_eats/features/profile/ui/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,8 +41,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
     const Center(
       child: Text("Orders"),
     ),
-    const Center(
-      child: Text("Profile"),
+    BlocProvider(
+      create: (context) => getIt<ProfileCubit>(),
+      child: const ProfileScreen(),
     ),
   ];
   final PageController _pageController = PageController();
@@ -97,9 +100,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
             ),
           ],
         ),
-        // body: _pages[_selectedIndex],
         body: PageView(
             controller: _pageController,
+            physics: const NeverScrollableScrollPhysics(),
             onPageChanged: _onTap,
             children: _pages));
   }

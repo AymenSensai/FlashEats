@@ -1,8 +1,11 @@
 class ApiConstants {
-  static const String apiBaseUrl = "http://192.168.1.5:8000/";
+  ApiConstants._();
+
+  static const String apiBaseUrl = "http://192.168.1.6:8000/";
 
   static const String login = "auth/login";
   static const String signup = "auth/register";
+  static const String logout = "auth/logout";
   static const String food = "food/index";
   static const String showFood = "food/show";
   static const String popularFood = "food/popular";
@@ -11,6 +14,8 @@ class ApiConstants {
 }
 
 class ApiErrors {
+  ApiErrors._();
+
   static const String badRequestError = "badRequestError";
   static const String noContent = "noContent";
   static const String forbiddenError = "forbiddenError";

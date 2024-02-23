@@ -93,7 +93,7 @@ class PopularFoodListView extends StatelessWidget {
                                       style: TextStyles.font12SteelGrayRegular),
                                   verticalSpace(2),
                                   SingleLineText(
-                                      text: food.price,
+                                      text: "\$${food.price}",
                                       style: TextStyles.font16OrangeSemiBold)
                                 ],
                               ),
