@@ -27,7 +27,7 @@ FoodData _$FoodDataFromJson(Map<String, dynamic> json) => FoodData(
       id: json['id'] as int,
       name: json['name'] as String,
       description: json['description'] as String,
-      price: json['price'] as String,
+      price: (json['price'] as num).toDouble(),
       image: json['image'] as String,
       type: json['type'] as String,
       topicsExtra: (json['topics_extra'] as List<dynamic>)

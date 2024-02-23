@@ -20,7 +20,7 @@ class FoodData {
   int id;
   String name;
   String description;
-  String price;
+  double price;
   String image;
   String type;
   @JsonKey(name: 'topics_extra')

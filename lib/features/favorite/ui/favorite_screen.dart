@@ -1,4 +1,4 @@
-import 'package:flash_eats/core/theming/styles.dart';
+import 'package:flash_eats/core/widgets/centered_title_app_bar.dart';
 import 'package:flash_eats/features/favorite/logic/cubit/favorite_cubit.dart';
 import 'package:flash_eats/features/favorite/ui/widgets/favorite_bloc_builder.dart';
 import 'package:flutter/material.dart';
@@ -21,14 +21,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        forceMaterialTransparency: true,
-        centerTitle: true,
-        title: Text(
-          "My favorites",
-          style: TextStyles.font18BlackBold,
-        ),
-      ),
+      appBar: centeredTitleAppBar("My favorites"),
       body: const SafeArea(child: FavoriteBlocBuilder()),
     );
   }

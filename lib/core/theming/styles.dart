@@ -30,6 +30,12 @@ class TextStyles {
       color: ColorsManager.black,
       fontFamily: appFontFamily);
 
+  static TextStyle font24GreenBold = TextStyle(
+      fontSize: 24.sp,
+      fontWeight: FontWeightHelper.bold,
+      color: ColorsManager.green,
+      fontFamily: appFontFamily);
+
   static TextStyle font24BlackMedium = TextStyle(
       fontSize: 24.sp,
       fontWeight: FontWeightHelper.medium,
@@ -52,6 +58,12 @@ class TextStyles {
       fontSize: 22.sp,
       fontWeight: FontWeightHelper.semiBold,
       color: ColorsManager.black,
+      fontFamily: appFontFamily);
+
+  static TextStyle font18SteelGrayBold = TextStyle(
+      fontSize: 18.sp,
+      fontWeight: FontWeightHelper.bold,
+      color: ColorsManager.steelGray,
       fontFamily: appFontFamily);
 
   static TextStyle font18SteelGrayMedium = TextStyle(

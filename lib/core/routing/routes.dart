@@ -1,4 +1,5 @@
 class Routes {
+  Routes._();
   static const String onBoardingScreen = '/onBoardingScreen';
   static const String loginScreen = '/loginScreen';
   static const String signUpScreen = '/signUpScreen';
@@ -9,4 +10,5 @@ class Routes {
   static const String favorites = '/favorites';
   static const String orders = '/orders';
   static const String profile = '/profile';
+  static const String personalInformationScreen = '/personalInformationScreen';
 }

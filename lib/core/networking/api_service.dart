@@ -6,6 +6,8 @@ import 'package:flash_eats/features/home/data/models/food_request_body.dart';
 import 'package:flash_eats/features/home/data/models/food_response.dart';
 import 'package:flash_eats/features/login/data/models/login_request_body.dart';
 import 'package:flash_eats/features/login/data/models/login_response.dart';
+import 'package:flash_eats/features/profile/data/models/personal_information_request_body.dart';
+import 'package:flash_eats/features/profile/data/models/personal_information_response.dart';
 import 'package:flash_eats/features/sign_up/data/models/sign_up_request_body.dart';
 import 'package:flash_eats/features/sign_up/data/models/sign_up_response.dart';
 import 'package:retrofit/retrofit.dart';
@@ -25,6 +27,14 @@ abstract class ApiService {
   Future<SignupResponse> signup(
     @Body() SignupRequestBody signupRequestBody,
   );
+
+  @POST(ApiConstants.signup)
+  Future<PersonalInformationResponse> update(
+    @Body() PersonalInformationRequestBody personalInformationRequestBody,
+  );
+
+  @POST(ApiConstants.logout)
+  Future<SignupResponse> logout(@Header('Authorization') String token);
 
   @GET(ApiConstants.food)
   Future<FoodResponse> getFood(@Queries() FoodRequestBody foodRequestBody);
