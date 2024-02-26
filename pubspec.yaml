@@ -71,6 +71,12 @@ dependencies:
   animate_do: ^3.3.3
   # For reading and writing simple key-value pairs.
   shared_preferences: ^2.2.2
+  # Flutter library for Stripe. Supports PaymentSheets, Apple & Google Pay, SCA, PSD2 and much more.
+  flutter_stripe: ^10.0.0
+  # To store sensetive data in .env file.
+  flutter_dotenv: ^5.1.0
+  # Dots indicator to show progression of a PageView.
+  dots_indicator: ^3.0.0
 
 
 dev_dependencies:
@@ -99,6 +105,7 @@ flutter:
   assets:
     - assets/svgs/
     - assets/images/
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

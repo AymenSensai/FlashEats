@@ -11,12 +11,16 @@ Future<void> main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.white, statusBarIconBrightness: Brightness.dark));
 
+  // await dotenv.load(fileName: ".env");
+
   // Show the splash screen
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   int onboardingStatus = prefs.getInt('onboarding') ?? 0;
+
+  // Stripe.publishableKey = dotenv.env['PUBLISHABLE_KEY']!;
 
   // Hide the splash screen once initialization is completed
   FlutterNativeSplash.remove();

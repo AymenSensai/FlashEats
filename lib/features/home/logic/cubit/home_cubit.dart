@@ -6,16 +6,6 @@ class HomeCubit extends Cubit<HomeState> {
   final HomeRepo _homeRepo;
   HomeCubit(this._homeRepo) : super(const HomeState.initial());
 
-  // void emitHomeStates() async {
-  //   emit(const HomeState.loading());
-  //   final response = await _homeRepo.getFood(FoodRequestBody());
-  //   response.when(success: (foodResponse) {
-  //     emit(HomeState.success(foodResponse));
-  //   }, failure: (error) {
-  //     emit(HomeState.error(error: error.apiErrorModel.message ?? ''));
-  //   });
-  // }
-
   void emitHomeStates() async {
     emit(const HomeState.loading());
     final response = await _homeRepo.getPopularFood();
@@ -23,6 +13,16 @@ class HomeCubit extends Cubit<HomeState> {
       emit(HomeState.success(foodResponse));
     }, failure: (error) {
       emit(HomeState.error(error: error.apiErrorModel.message ?? ''));
+    });
+  }
+
+  void getOffersFood() async {
+    emit(const HomeState.offersLoading());
+    final response = await _homeRepo.getOffersFood();
+    response.when(success: (response) {
+      emit(HomeState.offersSuccess(response));
+    }, failure: (error) {
+      emit(HomeState.offersError(error: error.apiErrorModel.message ?? ''));
     });
   }
 }

@@ -1,3 +1,5 @@
+import 'package:flash_eats/core/helpers/extensions.dart';
+import 'package:flash_eats/core/routing/routes.dart';
 import 'package:flash_eats/core/theming/colors.dart';
 import 'package:flash_eats/core/theming/styles.dart';
 import 'package:flash_eats/features/home/data/models/food_response.dart';
@@ -39,10 +41,13 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
           },
         ),
         actions: [
-          CircleAvatar(
-            backgroundColor: ColorsManager.lightGray,
-            radius: 20.0,
-            child: SvgPicture.asset('assets/svgs/cart_icon.svg'),
+          GestureDetector(
+            onTap: () => context.pushNamed(Routes.cart),
+            child: CircleAvatar(
+              backgroundColor: ColorsManager.lightGray,
+              radius: 20.0,
+              child: SvgPicture.asset('assets/svgs/cart_icon.svg'),
+            ),
           ),
         ],
         title: Column(

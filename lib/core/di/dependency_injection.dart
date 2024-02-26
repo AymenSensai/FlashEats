@@ -9,6 +9,8 @@ import 'package:flash_eats/features/home/data/repos/home_repo.dart';
 import 'package:flash_eats/features/home/logic/cubit/food_type_cubit.dart';
 import 'package:flash_eats/features/home/logic/cubit/home_cubit.dart';
 import 'package:flash_eats/features/home/logic/cubit/location_cubit.dart';
+import 'package:flash_eats/features/login/data/repos/login_repo.dart';
+import 'package:flash_eats/features/login/logic/cubit/login_cubit.dart';
 import 'package:flash_eats/features/profile/data/repos/profile_repo.dart';
 import 'package:flash_eats/features/profile/logic/cubit/personal_information_cubit.dart';
 import 'package:flash_eats/features/profile/logic/cubit/profile_cubit.dart';
@@ -16,15 +18,16 @@ import 'package:flash_eats/features/sign_up/data/repos/sign_up_repo.dart';
 import 'package:flash_eats/features/sign_up/logic/sign_up_cubit.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../features/login/data/repos/login_repo.dart';
-import '../../features/login/logic/cubit/login_cubit.dart';
-
 final getIt = GetIt.instance;
 
 Future<void> setupGetIt() async {
   // Dio & ApiService
   Dio dio = DioFactory.getDio();
   getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
+
+  // Dio & ApiService
+  // Dio stripeDio = StripeDioFactory.getDio();
+  // getIt.registerLazySingleton<StripeService>(() => StripeService(stripeDio));
 
   // login
   getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
@@ -53,4 +56,12 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<ProfileCubit>(() => ProfileCubit(getIt()));
   getIt.registerFactory<PersonalInformationCubit>(
       () => PersonalInformationCubit(getIt()));
+
+  // cart
+  // getIt.registerLazySingleton<CartRepo>(() => CartRepo(getIt()));
+  // getIt.registerFactory<CartCubit>(() => CartCubit(getIt()));
+
+  // payment
+  // getIt.registerLazySingleton<PaymentRepo>(() => PaymentRepo(getIt()));
+  // getIt.registerFactory<PaymentCubit>(() => PaymentCubit(getIt()));
 }

@@ -2,6 +2,7 @@ class ApiConstants {
   ApiConstants._();
 
   static const String apiBaseUrl = "http://192.168.1.6:8000/";
+  static const String stripeBaseUrl = "https://api.stripe.com/v1/";
 
   static const String login = "auth/login";
   static const String signup = "auth/register";
@@ -9,8 +10,10 @@ class ApiConstants {
   static const String food = "food/index";
   static const String showFood = "food/show";
   static const String popularFood = "food/popular";
+  static const String offer = "food/offer";
   static const String favorites = "user/favorites";
   static const String containsFavorite = "user/favorites/contains";
+  static const String cart = "user/cart";
 }
 
 class ApiErrors {

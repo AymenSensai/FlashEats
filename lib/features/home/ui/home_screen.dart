@@ -10,6 +10,7 @@ import 'package:flash_eats/features/home/logic/cubit/location_cubit.dart';
 import 'package:flash_eats/core/widgets/food_list_view.dart';
 import 'package:flash_eats/features/home/ui/widgets/food_type_view.dart';
 import 'package:flash_eats/features/home/ui/widgets/home_app_bar.dart';
+import 'package:flash_eats/features/home/ui/widgets/offers_page_view.dart';
 import 'package:flash_eats/features/home/ui/widgets/popular_food_List_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen>
   void initState() {
     super.initState();
     BlocProvider.of<HomeCubit>(context).emitHomeStates();
+    BlocProvider.of<HomeCubit>(context).getOffersFood();
     BlocProvider.of<LocationCubit>(context).getLocation();
   }
 
@@ -52,6 +54,8 @@ class _HomeScreenState extends State<HomeScreen>
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        const OffersPageView(),
+                        verticalSpace(8),
                         const FoodTypeView(),
                         verticalSpace(16),
                         // const PopularFoodListView(),

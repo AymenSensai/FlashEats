@@ -19,7 +19,8 @@ extension Navigation on BuildContext {
 
   void pop() => Navigator.of(this).pop();
 
-  Widget networkImage(String image, {double? width, double? height}) =>
+  Widget networkImage(String image,
+          {double? width, double? height, BoxFit? boxFit}) =>
       Image.network("${ApiConstants.apiBaseUrl}$image",
-          width: width, height: height, fit: BoxFit.contain);
+          width: width, height: height, fit: boxFit ?? BoxFit.contain);
 }

@@ -1,5 +1,7 @@
 import 'package:flash_eats/core/di/dependency_injection.dart';
 import 'package:flash_eats/core/routing/routes.dart';
+import 'package:flash_eats/features/cart/logic/cubit/cart_cubit.dart';
+import 'package:flash_eats/features/cart/ui/cart_screen.dart';
 import 'package:flash_eats/features/details/logic/cubit/details_cubit.dart';
 import 'package:flash_eats/features/details/ui/details_screen.dart';
 import 'package:flash_eats/features/home/logic/cubit/food_type_cubit.dart';
@@ -10,6 +12,8 @@ import 'package:flash_eats/features/home/ui/food_type_screen.dart';
 import 'package:flash_eats/features/home/ui/home_screen.dart';
 import 'package:flash_eats/features/login/ui/login_screen.dart';
 import 'package:flash_eats/features/onboarding/onboarding_screen.dart';
+import 'package:flash_eats/features/payment/logic/cubit/payment_cubit.dart';
+import 'package:flash_eats/features/payment/payment_screen.dart';
 import 'package:flash_eats/features/profile/logic/cubit/personal_information_cubit.dart';
 import 'package:flash_eats/features/profile/ui/personal_information_screen.dart';
 import 'package:flash_eats/features/sign_up/logic/sign_up_cubit.dart';
@@ -61,6 +65,21 @@ class AppRouter {
             child: const PersonalInformationScreen(),
           ),
         );
+
+      case Routes.cart:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<CartCubit>(),
+            child: const CartScreen(),
+          ),
+        );
+
+      case Routes.payment:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => getIt<PaymentCubit>(),
+                  child: PaymentScreen(price: arguments as double),
+                ));
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
