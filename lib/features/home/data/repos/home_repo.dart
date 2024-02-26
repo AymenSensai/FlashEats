@@ -3,6 +3,7 @@ import 'package:flash_eats/core/networking/api_result.dart';
 import 'package:flash_eats/core/networking/api_service.dart';
 import 'package:flash_eats/features/home/data/models/food_request_body.dart';
 import 'package:flash_eats/features/home/data/models/food_response.dart';
+import 'package:flash_eats/features/home/data/models/offer_response.dart';
 
 class HomeRepo {
   final ApiService _apiService;
@@ -22,6 +23,15 @@ class HomeRepo {
   Future<ApiResult<FoodResponse>> getPopularFood() async {
     try {
       final response = await _apiService.getPopularFood();
+      return ApiResult.success(response);
+    } catch (errro) {
+      return ApiResult.failure(ErrorHandler.handle(errro));
+    }
+  }
+
+  Future<ApiResult<OfferResponse>> getOffersFood() async {
+    try {
+      final response = await _apiService.getOffersFood();
       return ApiResult.success(response);
     } catch (errro) {
       return ApiResult.failure(ErrorHandler.handle(errro));

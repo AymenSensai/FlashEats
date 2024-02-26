@@ -28,7 +28,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     final response = await _favoriteRepo.deleteFavorite(
         'token $token', DetailsRequestBody(id: id));
     response.when(success: (foodResponse) {
-      emit(FavoriteState.favoriteRemoved());
+      emit(const FavoriteState.favoriteRemoved());
     }, failure: (error) {
       emit(FavoriteState.error(error: error.apiErrorModel.message ?? ''));
     });

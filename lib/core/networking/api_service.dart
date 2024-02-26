@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flash_eats/core/networking/api_constants.dart';
+import 'package:flash_eats/features/cart/data/models/cart_request_body.dart';
+import 'package:flash_eats/features/cart/data/models/cart_response.dart';
 import 'package:flash_eats/features/details/data/models/details_request_body.dart';
 import 'package:flash_eats/features/details/data/models/details_response.dart';
 import 'package:flash_eats/features/home/data/models/food_request_body.dart';
 import 'package:flash_eats/features/home/data/models/food_response.dart';
+import 'package:flash_eats/features/home/data/models/offer_response.dart';
 import 'package:flash_eats/features/login/data/models/login_request_body.dart';
 import 'package:flash_eats/features/login/data/models/login_response.dart';
 import 'package:flash_eats/features/profile/data/models/personal_information_request_body.dart';
@@ -42,6 +45,9 @@ abstract class ApiService {
   @GET(ApiConstants.popularFood)
   Future<FoodResponse> getPopularFood();
 
+  @GET(ApiConstants.offer)
+  Future<OfferResponse> getOffersFood();
+
   @GET(ApiConstants.favorites)
   Future<FoodResponse> getFavorites(@Header('Authorization') String token);
 
@@ -57,4 +63,14 @@ abstract class ApiService {
   Future<DetailsResponse> containsFavorite(
       @Header('Authorization') String token,
       @Queries() DetailsRequestBody detailsRequestBody);
+
+  @GET(ApiConstants.cart)
+  Future<CartResponse> getCartFood(@Header('Authorization') String token);
+
+  @PUT(ApiConstants.cart)
+  Future<CartResponse> addCartFood(@Header('Authorization') String token);
+
+  @DELETE(ApiConstants.cart)
+  Future<CartResponse> deleteCartFood(@Header('Authorization') String token,
+      @Body() CartRequestBody cartRequestBody);
 }

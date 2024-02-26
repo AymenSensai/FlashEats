@@ -9,4 +9,8 @@ class HomeState<T> with _$HomeState<T> {
   const factory HomeState.loading() = Loading;
   const factory HomeState.success(T data) = Success<T>;
   const factory HomeState.error({required String error}) = Error;
+
+  const factory HomeState.offersLoading() = OffersLoading;
+  const factory HomeState.offersSuccess(T data) = OffersSuccess;
+  const factory HomeState.offersError({required String error}) = OffersError;
 }
